@@ -40,7 +40,7 @@ export class Rabbitmq_rpcService {
     routingKey: 'handle-request',
     queue: 'handle-request',
   })
-  public async handleRequest({ amount }: IRabbitMQQueueDto) {
+  async handleRequest({ amount }: IRabbitMQQueueDto): Promise<string> {
     const messagePayload: IRabbitMQQueueDto = {
       amount,
     };
@@ -68,7 +68,7 @@ export class Rabbitmq_rpcService {
     routingKey: 'log-prime-numbers',
     queue: 'log-prime-numbers',
   })
-  public async logPrimeNumbers({ amount }: IRabbitMQQueueDto) {
+  logPrimeNumbers({ amount }: IRabbitMQQueueDto) {
     console.log(amount, 'is a prime number');
   }
 
@@ -77,7 +77,7 @@ export class Rabbitmq_rpcService {
     routingKey: 'log-non-prime-numbers',
     queue: 'log-non-prime-numbers',
   })
-  public async logNonPrimeNumbers({ amount }: IRabbitMQQueueDto) {
+  logNonPrimeNumbers({ amount }: IRabbitMQQueueDto) {
     console.log(amount, 'is not a prime number');
   }
 }
